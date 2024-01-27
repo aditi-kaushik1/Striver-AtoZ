@@ -1,3 +1,5 @@
+//Solution 1
+//Bottom up by using 2 variables - no need of a dp array
 import java.util.*;
 public class Solution {
 
@@ -15,4 +17,23 @@ public class Solution {
         }
 		System.out.println(curr);
 	}
+}
+
+//Solution 2
+//Top down approach
+class Solution {
+    public int fib(int n) {
+        int[] dp = new int[n + 1];
+        for(int i = 0; i <= n; i++)
+            dp[i] = -1;
+        return fibHelper(n, dp);
+    }
+
+    private int fibHelper(int n, int[] dp) {
+        if(n == 0 || n == 1)
+            return n;
+        if(dp[n] != -1)
+            return dp[n];
+        return dp[n] = fibHelper(n - 1, dp) + fibHelper(n - 2, dp);
+    }
 }
